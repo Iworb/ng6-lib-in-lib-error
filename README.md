@@ -1,5 +1,6 @@
 To reproduce an error run:
 ```
+npm i
 npm run build:lib
 ```
 

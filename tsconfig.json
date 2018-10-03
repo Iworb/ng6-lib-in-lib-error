@@ -16,6 +16,14 @@
     "lib": [
       "es2017",
       "dom"
-    ]
+    ],
+    "paths": {
+      "appla-components": [
+        "dist/appla-components"
+      ],
+      "appla-components/*": [
+        "dist/appla-components/*"
+      ]
+    }
   }
 }

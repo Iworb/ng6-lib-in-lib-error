@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "appla": {
+    "ng6-lib-in-lib-error": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
@@ -17,7 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/appla",
+            "outputPath": "dist/ng6-lib-in-lib-error",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -54,18 +54,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "appla:build"
+            "browserTarget": "ng6-lib-in-lib-error:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "appla:build:production"
+              "browserTarget": "ng6-lib-in-lib-error:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "appla:build"
+            "browserTarget": "ng6-lib-in-lib-error:build"
           }
         },
         "test": {
@@ -99,7 +99,7 @@
         }
       }
     },
-    "appla-e2e": {
+    "ng6-lib-in-lib-error-e2e": {
       "root": "e2e/",
       "projectType": "application",
       "architect": {
@@ -107,11 +107,11 @@
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "appla:serve"
+            "devServerTarget": "ng6-lib-in-lib-error:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "appla:serve:production"
+              "devServerTarget": "ng6-lib-in-lib-error:serve:production"
             }
           }
         },
@@ -125,7 +125,42 @@
           }
         }
       }
+    },
+    "appla-components": {
+      "root": "projects/appla-components",
+      "sourceRoot": "projects/appla-components/src",
+      "projectType": "library",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/appla-components/tsconfig.lib.json",
+            "project": "projects/appla-components/ng-package.json"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/appla-components/src/test.ts",
+            "tsConfig": "projects/appla-components/tsconfig.spec.json",
+            "karmaConfig": "projects/appla-components/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/appla-components/tsconfig.lib.json",
+              "projects/appla-components/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
-  "defaultProject": "appla"
+  "defaultProject": "ng6-lib-in-lib-error"
 }
